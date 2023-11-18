@@ -12,7 +12,21 @@
   <title>FunaVid/Donantes </title>
 
 
-    {{>header}}
+  <!-- Bootstrap -->
+  <link href="../vendors/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Font Awesome -->
+  <link href="../vendors/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+  <!-- NProgress -->
+  <link href="../vendors/nprogress/nprogress.css" rel="stylesheet">
+  <!-- bootstrap-progressbar -->
+  <link href="../vendors/bootstrap-progressbar/css/bootstrap-progressbar-3.3.4.min.css" rel="stylesheet">
+  <!-- bootstrap-daterangepicker -->
+  <link href="../vendors/bootstrap-daterangepicker/daterangepicker.css" rel="stylesheet">
+
+  <!-- Custom Theme Style -->
+  <link href="../build/css/custom.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="../css/servicios.css">
+
 
   <!-- links para exportar a excel -->
   <script src="https://unpkg.com/xlsx@0.16.9/dist/xlsx.full.min.js"></script>
@@ -25,14 +39,113 @@
   <div class="container body">
     <div class="main_container">
       <div class="col-md-3 left_col">
-        <div class="left_col scroll-view">
+        <div class="barraizquierda">
           <div class="navbar nav_title" style="border: 0;">
-
-            <a href="index.html" class="site_title"><img src="../images/VidaKidsLogoCut.png" class="fotito">
-              <span>VidaKids</span></a>
+            <a href="index.html" class="site_title"><img src="../images/VidaKidsLogoCut.png" class="fotito"> <span>VidaKids</span></a>
           </div>
           <div class="clearfix"></div>
-            {{>head }}
+      
+      {{>head}}
+      <!-- top navigation -->
+      <div class="top_nav">
+        <div class="nav_menu">
+          <div class="nav toggle">
+            <a id="menu_toggle"><i class="fa fa-bars"></i></a>
+          </div>
+          <nav class="nav navbar-nav">
+            <ul class=" navbar-right">
+              <li class="nav-item dropdown open" style="padding-left: 15px;">
+                <a href="javascript:;" class="user-profile dropdown-toggle" aria-haspopup="true" id="navbarDropdown"
+                  data-toggle="dropdown" aria-expanded="false">
+                  <img src="images/img.jpg" alt="">Admnistrador
+                </a>
+                <div class="dropdown-menu dropdown-usermenu pull-right" aria-labelledby="navbarDropdown">
+                  <a class="dropdown-item" href="javascript:;"> Profile</a>
+                  <a class="dropdown-item" href="javascript:;">
+                    <span class="badge bg-red pull-right">50%</span>
+                    <span>Settings</span>
+                  </a>
+                  <a class="dropdown-item" href="javascript:;">Help</a>
+                  <a class="dropdown-item" href="login.html"><i class="fa fa-sign-out pull-right"></i>
+                    Log Out</a>
+                </div>
+              </li>
+
+              <li role="presentation" class="nav-item dropdown open">
+                <a href="javascript:;" class="dropdown-toggle info-number" id="navbarDropdown1" data-toggle="dropdown"
+                  aria-expanded="false">
+                  <i class="fa fa-envelope-o"></i>
+                  <span class="badge bg-green">6</span>
+                </a>
+                <ul class="dropdown-menu list-unstyled msg_list" role="menu" aria-labelledby="navbarDropdown1">
+                  <li class="nav-item">
+                    <a class="dropdown-item">
+                      <span class="image"><img src="images/img.jpg" alt="Profile Image" /></span>
+                      <span>
+                        <span>John Smith</span>
+                        <span class="time">3 mins ago</span>
+                      </span>
+                      <span class="message">
+                        Film festivals used to be do-or-die moments for movie makers. They were
+                        where...
+                      </span>
+                    </a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="dropdown-item">
+                      <span class="image"><img src="images/img.jpg" alt="Profile Image" /></span>
+                      <span>
+                        <span>John Smith</span>
+                        <span class="time">3 mins ago</span>
+                      </span>
+                      <span class="message">
+                        Film festivals used to be do-or-die moments for movie makers. They were
+                        where...
+                      </span>
+                    </a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="dropdown-item">
+                      <span class="image"><img src="images/img.jpg" alt="Profile Image" /></span>
+                      <span>
+                        <span>John Smith</span>
+                        <span class="time">3 mins ago</span>
+                      </span>
+                      <span class="message">
+                        Film festivals used to be do-or-die moments for movie makers. They were
+                        where...
+                      </span>
+                    </a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="dropdown-item">
+                      <span class="image"><img src="images/img.jpg" alt="Profile Image" /></span>
+                      <span>
+                        <span>John Smith</span>
+                        <span class="time">3 mins ago</span>
+                      </span>
+                      <span class="message">
+                        Film festivals used to be do-or-die moments for movie makers. They were
+                        where...
+                      </span>
+                    </a>
+                  </li>
+                  <li class="nav-item">
+                    <div class="text-center">
+                      <a class="dropdown-item">
+                        <strong>See All Alerts</strong>
+                        <i class="fa fa-angle-right"></i>
+                      </a>
+                    </div>
+                  </li>
+                </ul>
+              </li>
+            </ul>
+          </nav>
+        </div>
+      </div>
+      <!-- /top navigation -->
+
 
       <!-- page content -->
       <div class="right_col" role="main">
@@ -50,7 +163,7 @@
         <section class="search_icon">
           <form class="form-inline my-2 my-lg-0">
             <div>
-              <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+              <input class="form-control" type="search" placeholder="Search" aria-label="Search">
             </div>
             <div class="btn-search">
               <button class="btn btn-outline-warning my-2 my-sm-0" type="submit"><img src="../images/bx-search-alt.svg"
@@ -68,13 +181,9 @@
                 <tr>
                   <th scope="col">ID</th>
                   <th scope="col">Nombre</th>
-                  <th scope="col">Dirección</th>
-                  <th scope="col">Teléfono</th>
-                  <th scope="col">Email</th>
-                  <th scope="col">Tipo Donante</th>
                   <th scope="col">Documento Identidad</th>
-                  <th scope="col">Fecha Registro</th>
-                  <th scope="col">Entidad Asociada</th>
+                  <th scope="col">Teléfono</th>
+                  <th scope="col">Email</th>                  
                   <th scope="col" class="th_center">Opciones</th>
                 </tr>
               </thead>
@@ -89,9 +198,11 @@
           </div> --}}
           <div class="pagination" id="pagination">
             <button type="submit" class="botonp" name="" id="prevPage">Anterior</button>
-            <span id="currentPage">
-              <h6 id="paginado">1</h6>
-            </span>
+            <div class="numerito">
+              <span id="currentPage">
+                <h6 id="paginado">1</h6>
+              </span>
+            </div>
             <button type="submit" class="botonp" name="" id="nextPage">Siguiente</button>
           </div>
         </main>
@@ -295,15 +406,10 @@
         const row = table.tBodies[0].insertRow();
         row.insertCell(0).textContent = item.id;
         row.insertCell(1).textContent = item.nombre;
-        row.insertCell(2).textContent = item.direccion;
+        row.insertCell(2).textContent = item.documento_Identidad;
         row.insertCell(3).textContent = item.telefono;
         row.insertCell(4).textContent = item.email;
-        row.insertCell(5).textContent = item.tipo_Donante;
-        row.insertCell(6).textContent = item.documento_Identidad;
-        row.insertCell(7).textContent = item.fecha_Registro;
-        row.insertCell(8).textContent = item.entidad_Asociada;
-
-        const optionsCell = row.insertCell(9);
+        const optionsCell = row.insertCell(5);
         optionsCell.className = 'Opciones';
         optionsCell.innerHTML = `
 
@@ -337,6 +443,30 @@
 </html>
 
 <style>
+  .site_title {
+    background-color: #0f84c3;
+    margin: 0%;
+  }
+  .barraizquierda {
+    background-color: #0f84c3;
+  }
+  .numerito {
+    margin-top: 10px;
+  }
+  .pagination {
+    margin-left: 690px;
+    justify-content: space-around;
+    width: 220px;
+  }
+  .form-control {
+    border-radius: 5px;
+  }
+
+  .tabla {
+    width: 1000px;
+    margin-left: 32vh;
+  }
+
   .fotito {
     border-radius: 50%;
     width: 50px;
@@ -345,10 +475,8 @@
   .botonp {
     border-radius: 5px;
     margin: 5px;
-    box-shadow: inset 2px 2px 4px rgba(120, 120, 120, .4), inset -3px -3px 3px rgba(255, 255, 255, .4);
-    color: white;
     padding: 3px;
-    background-color: #0f84c3;
+    width: 80px;
   }
 
   .th_center {
@@ -361,7 +489,7 @@
   }
 
   .titulo_s {
-    margin-left: 120px;
+    margin-left: 375px;
     margin-top: 120px
   }
 
@@ -369,17 +497,18 @@
   .opc_delete,
   .opc_eyes {
     width: 25px;
+    margin-right: 10px;
   }
 
   .icon_add {
     width: 55px;
-    margin-left: 45px;
+    margin-left: 315px;
     margin-top: -70px;
   }
 
   .search_icon {
     width: 200px;
-    margin-left: 900px;
+    margin-left: 1000px;
     margin-top: -70px;
     display: flex;
   }
@@ -387,7 +516,6 @@
   .btn-search {
     margin-left: 220px;
     margin-top: -38px;
-
   }
 
   .form-inline {
