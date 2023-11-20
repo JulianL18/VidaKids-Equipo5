@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="formulario.css">
+  <title>Crear Donante</title>
+</head>
+
+<body>
+  <div class="formulario">
+    <h1 class="titulo_formulario">Registrar nuevo donante</h1>
+    <form action="CrearDonantes.hbs" id="form">
+      <div class="formulario_bloque-uno">
+
+        <div class="input-control">
+          <label for="text">Nombre y Apellidos</label>
+          <input type="text" name="" id="nombre_Donante">
+          <div class="error"></div>
+        </div>
+
+        <div class="input-control">
+          <label for="email">Email</label>
+          <input type="email" name="" id="email_Donante">
+          <div class="error"></div>
+        </div>
+
+        <div class="input-control">
+          <label for="pass">Contraseña</label>
+          <input type="password" name="" id="contraseña_Donante">
+          <div class="error"></div>
+        </div>
+
+        <div class="input-control">
+          <label for="text">Dirección</label>
+          <input type="text" name="" id="direccion_Donante">
+          <div class="error"></div>
+        </div>
+
+        <div class="input-control">
+          <label for="text">Teléfono</label>
+          <input type="text" name="" id="telefono_Donante">
+          <div class="error"></div>
+        </div>
+      </div>
+
+      <div class="formulario_bloque-dos">
+        <div>
+          <div class="cont">
+            <label for="select">Tipo de donante</label>
+            <select class="caja" id="tipo_Donante" onchange="mostrarFormulario()">
+              <option>Seleccione tipo de donante</option>
+              <option value="1">Persona natural</option>
+              <option value="2">Persona jurídica</option>
+            </select>
+          </div>
+          <div id="1" style="display:none;" class="input-control">
+
+              <!-- Contenido del Formulario 1 -->
+              <label for="CC">CC</label>
+              <input type="text" id="CC" name="CC">
+            
+          </div>
+          <div id="2" style="display:none;" class="input-control">
+            
+              <!-- Contenido del Formulario 2 -->
+              <label for="NIT">NIT</label>
+              <input type="text" id="NIT" name="NIT">
+
+          </div>
+        </div>
+
+        <div class="input-control">
+          <label for="datetime">Fecha de registro</label>
+          <input type="datetime-local" name="" id="datetime">
+          <div class="error"></div>
+        </div>
+
+
+        <div class="input-control">
+          <label for="textarea">Entidad asociada</label>
+          <input name="" id="entidad_Asociada" type="text">
+          <div class="error"></div>
+        </div>
+
+      </div>
+
+      <button type="submit" class="boton" name="" id="boton">enviar</button>
+    
+    </form>
+  </div>
+  <script src="formulario_validaciones.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/luxon@2.0.2/build/global/luxon.min.js"></script>
+  <script>
+    const formulario = document.getElementById('form')
+    const nombre_Donante = document.getElementById('nombre_Donante')
+    const email_Donante = document.getElementById('email_Donante')
+    const contraseña_Donante = document.getElementById('contraseña_Donante')
+    const direccion_Donante = document.getElementById('direccion_Donante')
+    const telefono_Donante = document.getElementById('telefono_Donante')
+    const tipo_Donante = document.getElementById('tipo_Donante')
+    const documento_Identidad = document.getElementById('CC', 'NIT')
+    const fecha_Registro = document.getElementById('datetime')
+    const entidad_Asociada = document.getElementById('entidad_Asociada')
+
+
+    // TRAE LA FECHA Y HORA ACTUAL AL CAMPO DATE TIME
+    const fechaHoraActual = new Date().toISOString().slice(0, 16);
+    datetime.value = fechaHoraActual
+
+    formulario.addEventListener('submit', e => {
+      e.preventDefault()
+      validateInputs()
+    })
+
+    const setError = (element, message) => {
+      const inputControl = element.parentElement;
+      const errorDisplay = inputControl.querySelector('.error');
+
+      errorDisplay.innerText = message;
+      inputControl.classList.add('error');
+      inputControl.classList.remove('success')
+    }
+
+    const setSuccess = elemento => {
+      const inputControl = elemento.parentElement
+      const errorDisplay = inputControl.querySelector('.error')
+
+      errorDisplay.innerText = ""
+      inputControl.classList.add('success')
+      inputControl.classList.remove('error')
+    }
+
+
+    // VALIDA QUE EL FORMATO DEL CORREO ESTE BIEN(TEXTO @ TEXTO . TEXTO)
+    const validarCorreo = email => {
+      const re = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+      return re.test(String(email).toLowerCase());
+    }
+
+
+    // VALIDA QUE TENGA ALMENOS 8 CARACTERES
+    const validarContraseña = pass => {
+      const re = /^.{8,}$/
+      return re.test(pass)
+    }
+
+
+    // VALIDA QUE SOLO SEAN LETRAS(SE PUEDEN ESPACIOS Y LETRAS CON ACENTOS)
+    const validarTexto = text => {
+      const re = /^[A-Za-zÁáÉéÍíÓóÚú Ññ\s]*$/
+      return re.test(String(text))
+    }
+
+
+    // VALIDA QUE SOLO SE INGRESEN LETRAS Y QUE LA PRIMERA SEA MAYUSCULA (LA PUEDEN USAR PARA CAMPOS COMO NOMBRES)
+    const validarNombre = nombre_Donante => {
+      const re = /^[A-Z\u00C0-\u00D6\u00D8-\u00DE][a-zA-Z\u00C0-\u00D6\u00D8-\u00DE ]*$/
+
+
+      // /^[A-Z\u00C0-\u00D6\u00D8-\u00DE][a-z\u00DF-\u00F6\u00F8-\u00FF ]*$/ (ESTA LINEA VALIDA QUE LA PRIMERA SEA MAYUSCULA PERO SI PONES TODAS MAYUSCULA TE MUESTRA ERROR DEPRONTO A ALGUIEN LE SIRVA POR ESO LA DEJO)
+      return re.test(nombre_Donante)
+    }
+
+
+    // VALIDA QUE SOLO SE PUEDAN INGRESAR NUMEROS
+    const validarNumero = telefono_Donante => {
+      const re = /^\d+$/
+      return re.test(telefono_Donante)
+    }
+
+
+    const validateInputs = () => {
+      const nombre_DonanteValue = nombre_Donante.value.trim()
+      const email_DonanteValue = email_Donante.value.trim()
+      const contraseña_DonanteValue = contraseña_Donante.value.trim()
+      const direccion_DonanteValue = direccion_Donante.value.trim()
+      const telefono_DonanteValue = telefono_Donante.value.trim()
+      const tipo_DonanteValue = tipo_Donante.value.trim()
+      const documento_IdentidadValue = documento_Identidad.value.trim()
+      const fecha_RegistroValue = fecha_Registro.value.trim()
+
+      if (nombre_DonanteValue === "") {
+        setError(nombre_Donante, 'No puedes dejar este campo vacio.')
+      } else if (!validarNombre(nombre_DonanteValue)) {
+        setError(nombre_Donante, 'Se debe iniciar con la letra mayuscula y no se permiten caracteres especiales.')
+      } else {
+        setSuccess(nombre_Donante)
+      }
+
+
+      if (email_DonanteValue === "") {
+        setError(email_Donante, 'No puedes dejar este campo vacio.')
+      } else if (!validarCorreo(email_DonanteValue)) {
+        setError(email_Donante, 'Debes ingresar un correo electrónico válido')
+      } else {
+        setSuccess(email_Donante)
+      }
+
+
+      if (contraseña_DonanteValue === "") {
+        setError(contraseña_Donante, 'No puedes dejar este campo vacio.')
+      } else if (!validarContraseña(contraseña_DonanteValue)) {
+        setError(contraseña_Donante, 'La contraseña debe de tener al menos 8 caracteres.')
+      } else {
+        setSuccess(contraseña_Donante)
+      }
+
+
+      if (direccion_DonanteValue === "") {
+        setError(direccion_Donante, 'No puedes dejar este campo vacio')
+      } else {
+        setSuccess(direccion_Donante)
+      }
+
+
+      if (telefono_DonanteValue === "") {
+        setError(telefono_Donante, 'El campo teléfono debe de ser llenado.')
+      } else if (!validarNumero(telefono_DonanteValue)) {
+        setError(telefono_Donante, 'Sólo debes ingresar números')
+      } else {
+        setSuccess(telefono_Donante)
+      }
+
+
+      if (tipo_DonanteValue === "seleccionar") {
+        setError(tipo_Donante, 'Debes de seleccionar una opción valida')
+      } else {
+        setSuccess(tipo_Donante)
+      }
+
+
+      if (documento_IdentidadValue === "") {
+        setError(documento_Identidad, 'El campo de documento de identidad es obligatorio')
+      } else {
+        setSuccess(documento_Identidad)
+      }
+    }
+
+    function mostrarFormulario() {
+      var tipoFormulario = document.getElementById("tipo_Donante").value; // Ocultar todos los formularios
+      document.getElementById("1").style.display = "none";
+      document.getElementById("2").style.display = "none";
+      document.getElementById(tipoFormulario).style.display = "block";
+    }
+  </script>
+
+
+</body>
+
+</html>
+
+<style>
+  body {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .formulario {
+    width: 600px;
+    height: auto;
+    padding: 25px;
+    border: 1px solid #a5a5a5;
+    border-radius: 8px;
+    display: flex;
+    flex-direction: column;
+
+  }
+
+  .titulo_formulario {
+    font-size: 36px;
+    font-weight: 600;
+    text-align: center;
+    margin-top: 10px;
+  }
+
+  form {
+    display: grid;
+    grid-template-columns: 50% 50%;
+    grid-template-rows: auto;
+    grid-gap: 12px;
+  }
+
+
+  label {
+    display: block;
+    margin-bottom: 5px;
+    margin-top: 10px;
+    font-weight: bold;
+  }
+
+  .input-control {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .input-control.success input[type="text"],
+  .input-control.success input[type="email"],
+  .input-control.success input[type="password"],
+  .input-control.success input[type="datetime-local"],
+  .input-control.success select,
+  .input-control.success textarea {
+    border-color: #09c372;
+  }
+
+  .input-control.error input[type="text"],
+  .input-control.error input[type="email"],
+  .input-control.error input[type="password"],
+  .input-control.error select,
+  .input-control.error textarea {
+    border-color: red;
+  }
+
+  .input-control input[type="text"],
+  .input-control input[type="email"],
+  .input-control input[type="password"],
+  .input-control textarea {
+    width: 90%;
+    max-width: 90%;
+    padding: 10px;
+    margin-bottom: 4px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+  }
+
+  input[type="datetime-local"] {
+    width: 90%;
+    padding: 10px;
+    margin-bottom: 5px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+  }
+
+  .input-control input[type="datetime-local"]:focus,
+  .input-control input[type="text"]:focus,
+  .input-control input[type="email"]:focus,
+  .input-control input[type="password"]:focus,
+  .input-control textarea:focus,
+  .input-control select:focus {
+    border-color: #0071eb;
+    outline: none;
+  }
+
+  select {
+    width: 96%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+  }
+
+  option {
+    padding: 5px;
+  }
+
+  .boton {
+    background-color: #007bff;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    width: 602px;
+  }
+
+  .boton:hover {
+    background-color: #0056b3;
+  }
+
+  .input-control .error {
+    color: red;
+    font-size: 14px;
+    height: 13px;
+  }
+</style>

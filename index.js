@@ -46,6 +46,10 @@ app.get("/donantes", (req, res) => {
     res.render("indexDonantes.hbs");
 });
 
+app.get("/CrearDonante", (req, res) => {
+    res.render("CrearDonantes.hbs");
+});
+
 app.get("/medicamentos", (req, res) => {
     res.render("indexMedicamentos.hbs");
 });
