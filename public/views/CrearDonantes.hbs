@@ -57,16 +57,16 @@
           </div>
           <div id="1" style="display:none;" class="input-control">
 
-              <!-- Contenido del Formulario 1 -->
-              <label for="CC">CC</label>
-              <input type="text" id="CC" name="CC">
-            
+            <!-- Contenido del Formulario 1 -->
+            <label for="CC">CC</label>
+            <input type="text" id="CC" name="CC">
+
           </div>
           <div id="2" style="display:none;" class="input-control">
-            
-              <!-- Contenido del Formulario 2 -->
-              <label for="NIT">NIT</label>
-              <input type="text" id="NIT" name="NIT">
+
+            <!-- Contenido del Formulario 2 -->
+            <label for="NIT">NIT</label>
+            <input type="text" id="NIT" name="NIT">
 
           </div>
         </div>
@@ -87,7 +87,8 @@
       </div>
 
       <button type="submit" class="boton" name="" id="boton">enviar</button>
-    
+      <button type="button" class="botonc" name="" id="botonc" onclick="cancelarRegistro()">Cancelar</button>
+
     </form>
   </div>
   <script src="formulario_validaciones.js"></script>
@@ -244,6 +245,10 @@
       document.getElementById("2").style.display = "none";
       document.getElementById(tipoFormulario).style.display = "block";
     }
+
+    function cancelarRegistro() {
+      window.history.back();
+    }
   </script>
 
 
@@ -252,6 +257,19 @@
 </html>
 
 <style>
+  .botonc:hover {
+    background-color: #bf0909;
+  }
+  .botonc {
+    background-color: red;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+  }
+
   body {
     display: flex;
     align-items: center;
@@ -366,12 +384,12 @@
     border-radius: 5px;
     cursor: pointer;
     font-size: 16px;
-    width: 602px;
   }
 
   .boton:hover {
     background-color: #0056b3;
   }
+
 
   .input-control .error {
     color: red;

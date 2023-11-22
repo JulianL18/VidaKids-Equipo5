@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Visualizar Donante</title>
+</head>
+
+<body>
+  <dialog id="modal">
+
+    <form action="" method="post" enctype="multipart/form-data" onsubmit="return validarFormulario()">
+
+      <!-- Campo para el nombre -->
+      <label for="nombre">Nombre:</label>
+      <input type="text" id="nombre" name="nombre" required minlength="4" maxlength="100">
+
+      <!-- Campo para seleccionar una categoría -->
+      <label for="categoria">Categoría:</label>
+      <select id="categoria" name="categoria" required>
+        <option value="">Selecciona una categoría</option>
+        <option value="opcion1">Opción 1</option>
+        <option value="opcion2">Opción 2</option>
+        <option value="opcion3">Opción 3</option>
+      </select>
+
+      <!-- Campo para cargar un archivo -->
+      <label for="archivo">Cargar archivo:</label>
+      <input type="file" id="archivo" name="archivo" accept=".pdf, .doc, .docx">
+
+      <!-- Campo para escribir información -->
+      <label for="informacion">Información:</label>
+      <textarea id="informacion" name="informacion" rows="4" cols="50"></textarea>
+
+      <!-- Campo para cambiar el estado -->
+      <section>
+        <div>
+          <br>
+          <label for="">Disponibilidad:</label>
+          <div class="boton"></div>
+          <div class="btn-boton-estado">
+            <input type="checkbox" name="" id="btn-switch">
+            <label for="btn-switch" class="lbl-switch"></label>
+          </div>
+        </div>
+      </section>
+
+      <!-- Sección de botones -->
+      <section class="form_g_c">
+        <div>
+          <input type="submit" value="Guardar" class="btn btn-primary" onclick="guardadoExitoso()">
+        </div>
+        <div>
+          <input type="button" value="Cancelar" class="btn btn-danger" id="btn-cerrar-modal">
+        </div>
+      </section>
+    </form>
+  </dialog>
+  </div>
+
+</body>
+
+</html>
