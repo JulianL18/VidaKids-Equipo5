@@ -46,6 +46,10 @@ app.get("/donantes", (req, res) => {
     res.render("indexDonantes.hbs");
 });
 
+app.get("/modal", (req, res) => {
+    res.render("pruebamodal.hbs");
+});
+
 app.get("/CrearDonante", (req, res) => {
     res.render("crearDonantes.hbs");
 });

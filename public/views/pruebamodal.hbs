@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Formulario en Modal</title>
+  <style>
+    /* Estilos para la modal */
+    .modal {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.5);
+      justify-content: center;
+      align-items: center;
+    }
+
+    .modal-content {
+      background-color: #fff;
+      padding: 20px;
+      border-radius: 5px;
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- Botón para abrir la modal -->
+  <button onclick="abrirModal()">Abrir Formulario</button>
+
+  <!-- Modal -->
+  <div id="miModal" class="modal">
+    <div class="modal-content">
+      <!-- Formulario -->
+      <h2>Registro</h2>
+      <form id="miFormulario">
+        <!-- Tus campos de formulario van aquí -->
+        <div class="formulario">
+          <h1 class="titulo_formulario">Registrar nuevo donante</h1>
+          <form action="CrearDonantes.hbs" id="form">
+            <div class="formulario_bloque-uno">
+
+              <div class="input-control">
+                <label for="text">Nombre y Apellidos</label>
+                <input type="text" name="" id="nombre_Donante">
+                <div class="error"></div>
+              </div>
+
+              <div class="input-control">
+                <label for="email">Email</label>
+                <input type="email" name="" id="email_Donante">
+                <div class="error"></div>
+              </div>
+
+              <div class="input-control">
+                <label for="pass">Contraseña</label>
+                <input type="password" name="" id="contraseña_Donante">
+                <div class="error"></div>
+              </div>
+
+              <div class="input-control">
+                <label for="text">Dirección</label>
+                <input type="text" name="" id="direccion_Donante">
+                <div class="error"></div>
+              </div>
+
+              <div class="input-control">
+                <label for="text">Teléfono</label>
+                <input type="text" name="" id="telefono_Donante">
+                <div class="error"></div>
+              </div>
+            </div>
+
+            <div class="formulario_bloque-dos">
+              <div>
+                <div class="cont">
+                  <label for="select">Tipo de donante</label>
+                  <select class="caja" id="tipo_Donante" onchange="mostrarFormulario()">
+                    <option>Seleccione tipo de donante</option>
+                    <option value="1">Persona natural</option>
+                    <option value="2">Persona jurídica</option>
+                  </select>
+                </div>
+                <div id="1" style="display:none;" class="input-control">
+
+                  <!-- Contenido del Formulario 1 -->
+                  <label for="CC">CC</label>
+                  <input type="text" id="CC" name="CC">
+
+                </div>
+                <div id="2" style="display:none;" class="input-control">
+
+                  <!-- Contenido del Formulario 2 -->
+                  <label for="NIT">NIT</label>
+                  <input type="text" id="NIT" name="NIT">
+
+                </div>
+              </div>
+
+              <div class="input-control">
+                <label for="datetime">Fecha de registro</label>
+                <input type="datetime-local" name="" id="datetime">
+                <div class="error"></div>
+              </div>
+
+
+              <div class="input-control">
+                <label for="textarea">Entidad asociada</label>
+                <input name="" id="entidad_Asociada" type="text">
+                <div class="error"></div>
+              </div>
+
+            </div>
+
+            <button type="submit" class="boton" name="" id="boton">enviar</button>
+            <button type="button" class="botonc" name="" id="botonc" onclick="cancelarRegistro()">Cancelar</button>
+
+          </form>
+          <button type="submit">Guardar</button>
+          <button type="button" onclick="cancelarRegistro()">Cancelar</button>
+      </form>
+    </div>
+  </div>
+
+  <script>
+    function abrirModal() {
+      // Mostrar la modal
+      document.getElementById('miModal').style.display = 'flex';
+    }
+
+    function cerrarModal() {
+      // Ocultar la modal
+      document.getElementById('miModal').style.display = 'none';
+    }
+
+    function cancelarRegistro() {
+      // Cerrar la modal al cancelar
+      cerrarModal();
+    }
+  </script>
+
+</body>
+
+</html>
+<style>
+  .botonc:hover {
+    background-color: #bf0909;
+  }
+  .botonc {
+    background-color: red;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+  }
+
+  body {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .formulario {
+    width: 600px;
+    height: auto;
+    padding: 25px;
+    border: 1px solid #a5a5a5;
+    border-radius: 8px;
+    display: flex;
+    flex-direction: column;
+
+  }
+
+  .titulo_formulario {
+    font-size: 36px;
+    font-weight: 600;
+    text-align: center;
+    margin-top: 10px;
+  }
+
+  form {
+    display: grid;
+    grid-template-columns: 50% 50%;
+    grid-template-rows: auto;
+    grid-gap: 12px;
+  }
+
+
+  label {
+    display: block;
+    margin-bottom: 5px;
+    margin-top: 10px;
+    font-weight: bold;
+  }
+
+  .input-control {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .input-control.success input[type="text"],
+  .input-control.success input[type="email"],
+  .input-control.success input[type="password"],
+  .input-control.success input[type="datetime-local"],
+  .input-control.success select,
+  .input-control.success textarea {
+    border-color: #09c372;
+  }
+
+  .input-control.error input[type="text"],
+  .input-control.error input[type="email"],
+  .input-control.error input[type="password"],
+  .input-control.error select,
+  .input-control.error textarea {
+    border-color: red;
+  }
+
+  .input-control input[type="text"],
+  .input-control input[type="email"],
+  .input-control input[type="password"],
+  .input-control textarea {
+    width: 90%;
+    max-width: 90%;
+    padding: 10px;
+    margin-bottom: 4px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+  }
+
+  input[type="datetime-local"] {
+    width: 90%;
+    padding: 10px;
+    margin-bottom: 5px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+  }
+
+  .input-control input[type="datetime-local"]:focus,
+  .input-control input[type="text"]:focus,
+  .input-control input[type="email"]:focus,
+  .input-control input[type="password"]:focus,
+  .input-control textarea:focus,
+  .input-control select:focus {
+    border-color: #0071eb;
+    outline: none;
+  }
+
+  select {
+    width: 96%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+  }
+
+  option {
+    padding: 5px;
+  }
+
+  .boton {
+    background-color: #007bff;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+  }
+
+  .boton:hover {
+    background-color: #0056b3;
+  }
+
+
+  .input-control .error {
+    color: red;
+    font-size: 14px;
+    height: 13px;
+  }
+</style>
