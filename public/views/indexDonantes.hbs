@@ -60,7 +60,7 @@
                 <h4 class="agregar">Agregar donante</h4>
               </div>
 
-              <img src="../images/boton-mas.png" alt="icon" class="icon_add" id="btn-abrir-modal">
+              <img src="../images/boton-mas.png" alt="icon" class="icon_add" id="btn-abrir-crearDonante">
 
             </section>
             <section class="search_icon">
@@ -113,14 +113,14 @@
                 </button>
               </div>
             </main>
-            <dialog id="modal">
+            <dialog id="crearDonante">
               <div class="modal">
                 <div class="modal-content">
                   <h1 class="titulo_formulario">Registrar nuevo donante</h1>
                   <!-- Formulario -->
                   <div class="formulario">
                     <form id="form" action="" method="post" enctype="multipart/form-data"
-                      onsubmit="return validarFormulario()" class="form-modal">
+                      onsubmit="return validateInputs()" class="form-modal">
                       <div class="formulario_bloque-uno">
 
                         <div class="input-control">
@@ -152,7 +152,13 @@
                           <input type="text" name="" id="direccion_Donante">
                           <div class="error"></div>
                         </div>
-                    
+
+                        <div class="input-control2">
+                          <label for="text">¿El donante es padrino?</label>
+                          <input type="checkbox" name="" id="padrino">
+                          <div class="error"></div>
+                        </div>
+
                       </div>
 
                       <div class="formulario_bloque-dos">
@@ -165,7 +171,7 @@
                         <div class="input-control">
                           <label for="select">Tipo de documento</label>
                           <select class="caja" id="tipo_Documento">
-                            <option>Seleccione tipo de documento</option>
+                            <option value="op1">Seleccione tipo de documento</option>
                             <option value="1">Cédula ciudadanía</option>
                             <option value="2">Cédula extranjera</option>
                             <option value="3">Pasaporte</option>
@@ -191,9 +197,16 @@
                           <div class="error"></div>
                         </div>
 
+                        <div class="input-control2">
+                          <label for="switch">Estado</label>
+                          <label class="switch">
+                            <input type="checkbox" id="estado">
+                            <span class="slider round"></span>
+                          </label>
+                        </div>
                       </div>
                       <button type="submit" class="boton" name="" id="boton">Enviar</button>
-                      <input type="button" value="Cancelar" class="botonc" id="btn-cerrar-modal">
+                      <input type="button" value="Cancelar" class="botonc" id="btn-cerrar-crearDonante">
                     </form>
                   </div>
                 </div>
@@ -201,156 +214,164 @@
           </div>
 
           <dialog id="modal2">
-              <div class="modal">
-                <div class="modal-content">
-                  <!-- Formulario -->
-                  <div class="formulario">
-                    <form id="form" action="" method="post" enctype="multipart/form-data"
-                      onsubmit="return validarFormulario()" class="form-modal">
-                      <div class="formulario_bloque-uno">
+            <div class="modal2">
+              <div class="modal2-content">
+                <!-- Formulario -->
+                <div class="formulario2">
+                  <form id="form2" action="" method="post" enctype="multipart/form-data"
+                    onsubmit="return visualizarDonante())" class="form-modal">
+                    <div class="formulario_bloque-uno">
 
-                        <div class="input-control">
-                          <label for="text">Nombre completo</label>
-                          <input type="text" name="" id="nombre_Donante" placeholder="disabled">
-                          <div class="error"></div>
-                        </div>
-
-                        <div class="input-control">
-                          <label for="email">Email</label>
-                          <input type="email" name="" id="email_Donante">
-                          <div class="error"></div>
-                        </div>
-
-                        <div class="input-control">
-                          <label for="pass">Contraseña</label>
-                          <input type="password" name="" id="contraseña_Donante">
-                          <div class="error"></div>
-                        </div>
-
-                        <div class="input-control">
-                          <label for="text">Confirmar contraseña</label>
-                          <input type="password" name="" id="confirContra">
-                          <div class="error"></div>
-                        </div>
-
-                        <div class="input-control">
-                          <label for="text">Dirección</label>
-                          <input type="text" name="" id="direccion_Donante">
-                          <div class="error"></div>
-                        </div>
-                    
+                      <div class="input-control">
+                        <label for="text">Nombre completo</label>
+                        <input type="text" name="" id="nombre_Donante2" disabled="true">
+                        <div class="error"></div>
                       </div>
 
-                      <div class="formulario_bloque-dos">
-                        <div class="input-control">
-                          <label for="text">Teléfono</label>
-                          <input type="text" name="" id="telefono_Donante">
-                          <div class="error"></div>
-                        </div>
-
-                        <div class="input-control">
-                          <label for="select">Tipo de documento</label>
-                          <select class="caja" id="tipo_Documento">
-                            <option>Seleccione tipo de documento</option>
-                            <option value="1">Cédula ciudadanía</option>
-                            <option value="2">Cédula extranjera</option>
-                            <option value="3">Pasaporte</option>
-                            <option value="4">Permiso de trabajo</option>
-                          </select>
-                        </div>
-
-                        <div class="input-control">
-                          <label for="text">Documento de identidad</label>
-                          <input type="text" name="" id="documento_Identidad">
-                          <div class="error"></div>
-                        </div>
-
-                        <div class="input-control">
-                          <label for="datetime">Fecha de registro</label>
-                          <input type="datetime-local" name="" id="datetime" class="fechita">
-                          <div class="error"></div>
-                        </div>
-
-                        <div class="input-control">
-                          <label for="textarea">Entidad asociada</label>
-                          <input name="" id="entidad_Asociada" type="text">
-                          <div class="error"></div>
-                        </div>
-
+                      <div class="input-control">
+                        <label for="email">Email</label>
+                        <input type="email" name="" id="email_Donante2" disabled="true">
+                        <div class="error"></div>
                       </div>
-                      <input type="button" value="Cancelar" class="botonc" id="btn-cerrar-modal2">
-                    </form>
-                  </div>
+
+                      <div class="input-control">
+                        <label for="pass">Contraseña</label>
+                        <input type="password" name="" id="contraseña_Donante2" disabled="true">
+                        <div class="error"></div>
+                      </div>
+
+                      <div class="input-control">
+                        <label for="text">Dirección</label>
+                        <input type="text" name="" id="direccion_Donante2" disabled="true">
+                        <div class="error"></div>
+                      </div>
+
+                      <div class="input-control21">
+                        <label for="text">¿El donante es padrino?</label>
+                        <input type="checkbox" name="" id="padrino2" disabled="true">
+                        <div class="error"></div>
+                      </div>
+
+                    </div>
+
+                    <div class="formulario_bloque-dos">
+                      <div class="input-control">
+                        <label for="text">Teléfono</label>
+                        <input type="text" name="" id="telefono_Donante2" disabled="true">
+                        <div class="error"></div>
+                      </div>
+
+                      <div class="input-control">
+                        <label for="select">Tipo de documento</label>
+                        <select class="caja" id="tipo_Documento2" disabled="true">
+                          <option value="">Seleccione tipo de documento</option>
+                          <option value="CC">Cédula ciudadanía</option>
+                          <option value="CE">Cédula extranjera</option>
+                          <option value="PP">Pasaporte</option>
+                          <option value="PPT">Permiso de trabajo</option>
+                        </select>
+                      </div>
+
+                      <div class="input-control">
+                        <label for="text">Documento de identidad</label>
+                        <input type="text" name="" id="documento_Identidad2" disabled="true">
+                        <div class="error"></div>
+                      </div>
+
+                      <div class="input-control">
+                        <label for="datetime">Fecha de registro</label>
+                        <input type="datetime-local" name="" id="datetime2" class="fechita" disabled="true">
+                        <div class="error"></div>
+                      </div>
+
+                      <div class="input-control">
+                        <label for="textarea">Entidad asociada</label>
+                        <input name="" id="entidad_Asociada2" type="text" disabled="true">
+                        <div class="error"></div>
+                      </div>
+
+                      <div class="input-control2">
+                        <label for="switch">Estado</label>
+                        <label class="switch">
+                          <input type="checkbox" id="estado2" disabled="true">
+                          <span class="slider round"></span>
+                        </label>
+                      </div>
+
+                    </div>
+                    <input type="button" value="Cancelar" class="botonc" id="btn-cerrar-modal">
+                  </form>
                 </div>
-            </dialog>
-          </div>
-          <!-- /page content -->
-
-          <!-- footer content -->
-          <footer>
-            <div class="pull-right">
-              Gentelella - Bootstrap Admin Template by <a href="https://colorlib.com">Colorlib</a>
-            </div>
-            <div class="clearfix"></div>
-          </footer>
-          <!-- /footer content -->
+              </div>
+          </dialog>
         </div>
+        <!-- /page content -->
+
+        <!-- footer content -->
+        <footer>
+          <div class="pull-right">
+            Gentelella - Bootstrap Admin Template by <a href="https://colorlib.com">Colorlib</a>
+          </div>
+          <div class="clearfix"></div>
+        </footer>
+        <!-- /footer content -->
       </div>
-      <!--exportar datos a excel-->
-      <script src="../js/export-excel.js"></script>
-      <!--mensaje de guardado-->
-      <script src="../js/alerts/guardado_s.js"></script>
-      <!--alerta-->
-      <script src="../js/alerts/delete.js"></script>
-      <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
-      <!--js-->
-      <script src="../js/registro_servicio.js"></script>
-      <!--Boxicon-->
-      <script src="https://unpkg.com/boxicons@2.1.4/dist/boxicons.js"></script>
-      <!-- jQuery -->
-      <script src="../vendors/jquery/dist/jquery.min.js"></script>
-      <!-- Bootstrap -->
-      <script src="../vendors/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-      <!-- FastClick -->
-      <script src="../vendors/fastclick/lib/fastclick.js"></script>
-      <!-- NProgress -->
-      <script src="../vendors/nprogress/nprogress.js"></script>
-      <!-- Chart.js -->
-      <script src="../vendors/Chart.js/dist/Chart.min.js"></script>
-      <!-- jQuery Sparklines -->
-      <script src="../vendors/jquery-sparkline/dist/jquery.sparkline.min.js"></script>
-      <!-- morris.js -->
-      <script src="../vendors/raphael/raphael.min.js"></script>
-      <script src="../vendors/morris.js/morris.min.js"></script>
-      <!-- gauge.js -->
-      <script src="../vendors/gauge.js/dist/gauge.min.js"></script>
-      <!-- bootstrap-progressbar -->
-      <script src="../vendors/bootstrap-progressbar/bootstrap-progressbar.min.js"></script>
-      <!-- Skycons -->
-      <script src="../vendors/skycons/skycons.js"></script>
-      <!-- Flot -->
-      <script src="../vendors/Flot/jquery.flot.js"></script>
-      <script src="../vendors/Flot/jquery.flot.pie.js"></script>
-      <script src="../vendors/Flot/jquery.flot.time.js"></script>
-      <script src="../vendors/Flot/jquery.flot.stack.js"></script>
-      <script src="../vendors/Flot/jquery.flot.resize.js"></script>
-      <!-- Flot plugins -->
-      <script src="../vendors/flot.orderbars/js/jquery.flot.orderBars.js"></script>
-      <script src="../vendors/flot-spline/js/jquery.flot.spline.min.js"></script>
-      <script src="../vendors/flot.curvedlines/curvedLines.js"></script>
-      <!-- DateJS -->
-      <script src="../vendors/DateJS/build/date.js"></script>
-      <!-- bootstrap-daterangepicker -->
-      <script src="../vendors/moment/min/moment.min.js"></script>
-      <script src="../vendors/bootstrap-daterangepicker/daterangepicker.js"></script>
+    </div>
+    <!--exportar datos a excel-->
+    <script src="../js/export-excel.js"></script>
+    <!--mensaje de guardado-->
+    <script src="../js/alerts/guardado_s.js"></script>
+    <!--alerta-->
+    <script src="../js/alerts/delete.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+    <!--js-->
+    <script src="../js/registro_servicio.js"></script>
+    <!--Boxicon-->
+    <script src="https://unpkg.com/boxicons@2.1.4/dist/boxicons.js"></script>
+    <!-- jQuery -->
+    <script src="../vendors/jquery/dist/jquery.min.js"></script>
+    <!-- Bootstrap -->
+    <script src="../vendors/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- FastClick -->
+    <script src="../vendors/fastclick/lib/fastclick.js"></script>
+    <!-- NProgress -->
+    <script src="../vendors/nprogress/nprogress.js"></script>
+    <!-- Chart.js -->
+    <script src="../vendors/Chart.js/dist/Chart.min.js"></script>
+    <!-- jQuery Sparklines -->
+    <script src="../vendors/jquery-sparkline/dist/jquery.sparkline.min.js"></script>
+    <!-- morris.js -->
+    <script src="../vendors/raphael/raphael.min.js"></script>
+    <script src="../vendors/morris.js/morris.min.js"></script>
+    <!-- gauge.js -->
+    <script src="../vendors/gauge.js/dist/gauge.min.js"></script>
+    <!-- bootstrap-progressbar -->
+    <script src="../vendors/bootstrap-progressbar/bootstrap-progressbar.min.js"></script>
+    <!-- Skycons -->
+    <script src="../vendors/skycons/skycons.js"></script>
+    <!-- Flot -->
+    <script src="../vendors/Flot/jquery.flot.js"></script>
+    <script src="../vendors/Flot/jquery.flot.pie.js"></script>
+    <script src="../vendors/Flot/jquery.flot.time.js"></script>
+    <script src="../vendors/Flot/jquery.flot.stack.js"></script>
+    <script src="../vendors/Flot/jquery.flot.resize.js"></script>
+    <!-- Flot plugins -->
+    <script src="../vendors/flot.orderbars/js/jquery.flot.orderBars.js"></script>
+    <script src="../vendors/flot-spline/js/jquery.flot.spline.min.js"></script>
+    <script src="../vendors/flot.curvedlines/curvedLines.js"></script>
+    <!-- DateJS -->
+    <script src="../vendors/DateJS/build/date.js"></script>
+    <!-- bootstrap-daterangepicker -->
+    <script src="../vendors/moment/min/moment.min.js"></script>
+    <script src="../vendors/bootstrap-daterangepicker/daterangepicker.js"></script>
 
 
-      <!-- Custom Theme Scripts -->
-      <script src="../build/js/custom.min.js"></script>
+    <!-- Custom Theme Scripts -->
+    <script src="../build/js/custom.min.js"></script>
 
-      <script src="formulario_validaciones.js"></script>
-      <script src="https://cdn.jsdelivr.net/npm/luxon@2.0.2/build/global/luxon.min.js"></script>
-      <script src="../js/indexDonantes.js"></script>
+    <script src="formulario_validaciones.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/luxon@2.0.2/build/global/luxon.min.js"></script>
+    <script src="../js/indexDonantes.js"></script>
 
 </body>
 
