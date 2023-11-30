@@ -29,8 +29,8 @@
 }
 
 .tabla {
-  width: 1000px;
-  margin-left: 32vh;
+  width: 70%;
+  margin-left: 15%;
 }
 
 .fotito {
@@ -200,7 +200,7 @@ dialog {
 
 .modal {
   display: flex;
-  width: 100%;
+  width: auto;
   height: 100%;
   background-color: rgba(0, 0, 0, 0.5);
   justify-content: center;

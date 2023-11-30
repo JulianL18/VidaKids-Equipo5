@@ -143,6 +143,36 @@ table.addEventListener("click", (event) => {
   }
 });
 
+//-------------------------------------------------------------EDITAR--------------------------------------------------------------------
+//-----------------------------------------------------------------------------------------------------------------------------
+
+table.addEventListener("click", (event) => {
+  if (event.target.classList.contains("opc_edit")) {
+    const rowIndex = event.target.closest("tr").rowIndex - 1 + (currentPage - 1) * itemsPerPage;
+
+    if (rowIndex >= 0 && rowIndex < data.length) {
+      const selectedItem = data[rowIndex];
+
+      // Llenar campos del modal con los datos obtenidos
+      document.getElementById("nombre_Donante2").value = selectedItem.nombre;
+      document.getElementById("email_Donante2").value = selectedItem.email;
+      document.getElementById("contraseña_Donante2").value = "********";
+      document.getElementById("direccion_Donante2").value = selectedItem.direccion;
+      document.getElementById("telefono_Donante2").value = selectedItem.telefono;
+      document.getElementById("tipo_Documento2").value = selectedItem.tipo_Documento;
+      document.getElementById("documento_Identidad2").value = selectedItem.documento_Identidad;
+      document.getElementById("datetime2").value = selectedItem.fecha_Registro;
+      document.getElementById("entidad_Asociada2").value = selectedItem.entidad_Asociada;
+      document.getElementById("padrino2").checked = selectedItem.padrino;
+      document.getElementById("estado2").checked = selectedItem.estado; // Suponiendo que 'estado' es un campo booleano
+
+      // Muestra el modal
+      const modal = document.getElementById("modal3");
+      modal.showModal();
+    }
+  }
+});
+
 document.addEventListener("DOMContentLoaded", function () {
   // Configuración para la primera modal (crearDonante)
   const btnAbrirCrearDonante = document.querySelector("#btn-abrir-crearDonante");
@@ -405,7 +435,6 @@ function agregarDonante() {
   const tipo_DocumentoValue = tipo_Documento.value.trim();
   const documento_IdentidadValue = documento_Identidad.value.trim();
   const fecha_RegistroValue = fecha_Registro.value.trim();
-  
   var checkboxPadrino = document.getElementById("padrino");
   var checkboxEstado = document.getElementById("estado");
 
