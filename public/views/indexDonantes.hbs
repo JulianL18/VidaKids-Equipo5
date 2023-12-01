@@ -279,19 +279,115 @@
                       </div>
 
                     </div>
-                    <input type="button" value="Atrás" class="botonc" id="btn-cerrar-modal">
+
                   </form>
+                  <div class="divbotonc"><input type="button" value="Atrás" class="botonc" id="btn-cerrar-modal"></div>
                 </div>
               </div>
           </dialog>
         </div>
+        <dialog id="modalEditar">
+          <div class="modal2">
+            <div class="modal2-content">
+              <!-- Formulario -->
+              <div class="formulario2">
+                <form id="form3" action="" method="post" enctype="multipart/form-data"
+                  onsubmit="return visualizarDonante())" class="form-modal">
+                  <div class="formulario_bloque-uno">
+
+                    <div class="input-control">
+                      <label for="text">Nombre completo</label>
+                      <input type="text" name="" id="nombre_Donante3">
+                      <div class="error"></div>
+                    </div>
+
+                    <div class="input-control">
+                      <label for="email">Email</label>
+                      <input type="email" name="" id="email_Donante3">
+                      <div class="error"></div>
+                    </div>
+
+                    <div class="input-control">
+                      <label for="pass">Contraseña</label>
+                      <input type="password" name="" id="contraseña_Donante3">
+                      <div class="error"></div>
+                    </div>
+
+                    <div class="input-control">
+                      <label for="text">Dirección</label>
+                      <input type="text" name="" id="direccion_Donante3">
+                      <div class="error"></div>
+                    </div>
+
+                    <div class="input-control21">
+                      <label for="text">¿El donante es padrino?</label>
+                      <input type="checkbox" name="" id="padrino3">
+                      <div class="error"></div>
+                    </div>
+
+                  </div>
+
+                  <div class="formulario_bloque-dos">
+                    <div class="input-control">
+                      <label for="text">Teléfono</label>
+                      <input type="text" name="" id="telefono_Donante3">
+                      <div class="error"></div>
+                    </div>
+
+                    <div class="input-control">
+                      <label for="select">Tipo de documento</label>
+                      <select class="caja" id="tipo_Documento3">
+                        <option value="">Seleccione tipo de documento</option>
+                        <option value="CC">Cédula ciudadanía</option>
+                        <option value="CE">Cédula extranjera</option>
+                        <option value="PP">Pasaporte</option>
+                        <option value="PPT">Permiso de trabajo</option>
+                      </select>
+                    </div>
+
+                    <div class="input-control">
+                      <label for="text">Documento de identidad</label>
+                      <input type="text" name="" id="documento_Identidad3">
+                      <div class="error"></div>
+                    </div>
+
+                    <div class="input-control">
+                      <label for="datetime">Fecha de registro</label>
+                      <input type="datetime-local" name="" id="datetime3" class="fechita">
+                      <div class="error"></div>
+                    </div>
+
+                    <div class="input-control">
+                      <label for="textarea">Entidad asociada</label>
+                      <input name="" id="entidad_Asociada3" type="text">
+                      <div class="error"></div>
+                    </div>
+
+                    <div class="input-control2">
+                      <label for="switch">Estado</label>
+                      <label class="switch">
+                        <input type="checkbox" id="estado3">
+                        <span class="slider round"></span>
+                      </label>
+                    </div>
+
+                  </div>
+
+                </form>
+                <div class="divbotonc">
+                  <input type="button" value="Atrás" class="botonc" id="btn-cerrar-modal3">
+                  <button type="submit" class="boton" name="" id="botonedit">Guardar</button>
+                </div>
+              </div>
+            </div>
+        </dialog>
         <!-- /page content -->
 
         {{> footer}}
 
       </div>
-      </div>
     </div>
+  </div>
 </body>
 
 </html>

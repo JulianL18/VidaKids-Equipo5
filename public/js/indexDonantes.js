@@ -154,24 +154,104 @@ table.addEventListener("click", (event) => {
       const selectedItem = data[rowIndex];
 
       // Llenar campos del modal con los datos obtenidos
-      document.getElementById("nombre_Donante2").value = selectedItem.nombre;
-      document.getElementById("email_Donante2").value = selectedItem.email;
-      document.getElementById("contraseña_Donante2").value = "********";
-      document.getElementById("direccion_Donante2").value = selectedItem.direccion;
-      document.getElementById("telefono_Donante2").value = selectedItem.telefono;
-      document.getElementById("tipo_Documento2").value = selectedItem.tipo_Documento;
-      document.getElementById("documento_Identidad2").value = selectedItem.documento_Identidad;
-      document.getElementById("datetime2").value = selectedItem.fecha_Registro;
-      document.getElementById("entidad_Asociada2").value = selectedItem.entidad_Asociada;
-      document.getElementById("padrino2").checked = selectedItem.padrino;
-      document.getElementById("estado2").checked = selectedItem.estado; // Suponiendo que 'estado' es un campo booleano
+      document.getElementById("nombre_Donante3").value = selectedItem.nombre;
+      document.getElementById("email_Donante3").value = selectedItem.email;
+      document.getElementById("contraseña_Donante3").value = "********";
+      document.getElementById("direccion_Donante3").value = selectedItem.direccion;
+      document.getElementById("telefono_Donante3").value = selectedItem.telefono;
+      document.getElementById("tipo_Documento3").value = selectedItem.tipo_Documento;
+      document.getElementById("documento_Identidad3").value = selectedItem.documento_Identidad;
+      document.getElementById("datetime3").value = selectedItem.fecha_Registro;
+      document.getElementById("entidad_Asociada3").value = selectedItem.entidad_Asociada;
+      document.getElementById("padrino3").checked = selectedItem.padrino;
+      document.getElementById("estado3").checked = selectedItem.estado; // Suponiendo que 'estado' es un campo booleano
 
       // Muestra el modal
-      const modal = document.getElementById("modal3");
+      const modal = document.getElementById("modalEditar");
       modal.showModal();
     }
   }
 });
+
+table.addEventListener("click", (event) => {
+  if (event.target.classList.contains("opc_delete")) {
+    const rowIndex = event.target.closest("tr").rowIndex - 1 + (currentPage - 1) * itemsPerPage;
+
+    if (rowIndex >= 0 && rowIndex < data.length) {
+      const swalWithBootstrapButtons = Swal.mixin({
+        customClass: {
+          confirmButton: "btn btn-success",
+          cancelButton: "btn btn-danger"
+        },
+        buttonsStyling: false
+      });
+      swalWithBootstrapButtons.fire({
+        title: "Are you sure?",
+        text: "You won't be able to revert this!",
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonText: "Yes, delete it!",
+        cancelButtonText: "No, cancel!",
+        reverseButtons: true
+      }).then((result) => {
+        if (result.isConfirmed) {
+          swalWithBootstrapButtons.fire({
+            title: "Deleted!",
+            text: "Your file has been deleted.",
+            icon: "success"
+          });
+        } else if (
+          /* Read more about handling dismissals below */
+          result.dismiss === Swal.DismissReason.cancel
+        ) {
+          swalWithBootstrapButtons.fire({
+            title: "Cancelado",
+            text: "El registro no se ha eliminado",
+            icon: "error"
+          });
+        }
+      });
+    }
+  }
+});
+const botoncito = document.querySelector('#botonedit')
+botoncito.addEventListener('click', (event) => {
+  const swalWithBootstrapButtons = Swal.mixin({
+    customClass: {
+      confirmButton: "btn btn-success",
+      cancelButton: "btn btn-danger"
+    },
+    buttonsStyling: false
+  });
+  swalWithBootstrapButtons.fire({
+    title: "¿Desea guardar los cambios?",
+    text: "No podrá revertir los cambios realizados",
+    icon: "warning",
+    showCancelButton: true,
+    confirmButtonText: "Guardar cambios",
+    cancelButtonText: "No, cancelar",
+    reverseButtons: true
+  }).then((result) => {
+    if (result.isConfirmed) {
+      swalWithBootstrapButtons.fire({
+        title: "Cambios realizados",
+        text: "El registro se a editado con éxito",
+        icon: "success"
+      });
+    } else if (
+      /* Read more about handling dismissals below */
+      result.dismiss === Swal.DismissReason.cancel
+    ) {
+      swalWithBootstrapButtons.fire({
+        title: "Cancelado",
+        text: "Los cambios no han sido guardados",
+        icon: "error"
+      });
+    }
+  });
+  const modal3 = document.querySelector('#modalEditar')
+  modal3.close()
+})
 
 document.addEventListener("DOMContentLoaded", function () {
   // Configuración para la primera modal (crearDonante)
@@ -198,6 +278,12 @@ document.addEventListener("DOMContentLoaded", function () {
   btnCerrarModal2.addEventListener("click", () => {
     modal2.close();
   });
+
+  const modal3 = document.querySelector('#modalEditar')
+  const btnCerrarModal3 = document.querySelector('#btn-cerrar-modal3')
+  btnCerrarModal3.addEventListener('click', () => {
+    modal3.close();
+  })
 });
 
 
@@ -468,6 +554,13 @@ function agregarDonante() {
   data.push(donante);
 
   console.log(data);
+  Swal.fire({
+    position: "center",
+    icon: "success",
+    title: "Donante registrado con éxito",
+    showConfirmButton: false,
+    timer: 1500
+  });
 }
 
 function hayErrores() {
@@ -557,6 +650,6 @@ contraseña_Donante.addEventListener("input", validarContraseñaDonante);
 contraseñaC_Donante.addEventListener("input", validarContraseñaCDonante);
 telefono_Donante.addEventListener("input", validarTelefonoDonante);
         
-//--------------------------------------VISUALIZAR DONANTE-----------------------------------------
+//--------------------------------------EDITAR DONANTE-----------------------------------------
 //-------------------------------------------------------------------------------------------------
 
