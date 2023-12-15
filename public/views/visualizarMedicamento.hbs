@@ -1,0 +1,251 @@
+{{>header}}
+<link rel="stylesheet" href="../css/acudientes/editar.css">
+{{>head}}
+<div class="right_col" role="main">
+    <div class="prueba">
+        <form action="" class="formulario" id="formulario">
+
+
+            <div class="columnas">
+                <div class="columna">
+                    <!-- Grupo: beneficiario -->
+                    <div class="formulario__grupo" id="grupo__beneficiario">
+                        <label for="beneficiario" class="formulario__label">Beneficiario</label>
+
+                        <div class="formulario__grupo-input">
+                            <input type="text" class="formulario__input" name="beneficiario" id="beneficiario"
+                                placeholder="Nombre Completo" disabled="">
+                            <i class="formulario__validacion-estado fas fa-times-circle"></i>
+                        </div>
+                        <p class="formulario__input-error">El campo no puede contener numeros</p>
+                    </div>
+
+
+                    <!-- Grupo: tiop de documento -->
+                    <div class="formulario__grupo" id="grupo__tipodocumento">
+                        <label for="tipo" class="formulario__label">Tipo De Documento</label>
+                        <div class="formulario__grupo-input">
+                            <select id="tipo" name="tipo" disabled="">
+                                <option value="">Selecciona Tipo De documento</option>
+                                <option value="nit">NIT</option>
+                                <option value="cc">CC</option>
+                                <option value="pa">PA</option>
+                                <option value="de">DE</option>
+                                <option value="ptp">PTP</option>
+                                <option value="de">DE</option>
+                                <option value="ti">TI</option>
+                                <option value="RC">RC</option>
+                            </select>
+                            <i class="formulario__validacion-estado fas fa-times-circle"></i>
+                        </div>
+                        <p class="formulario__input-error">Selecciona El tipo de documento</p>
+                    </div>
+
+
+                    <!-- Grupo: fechaNacimiento -->
+                    <div class="formulario__grupo" id="grupo__fechaNacimiento">
+                        <label for="fechaNacimiento" class="formulario__label">Fecha De
+                            Nacimiento</label>
+                        <div class="formulario__grupo-input">
+                            <input type="text" class="formulario__input" name="fechaNacimiento" id="fechaNacimiento"
+                                placeholder="dd/mm/yy" disabled="">
+                            <i class="formulario__validacion-estado fas fa-times-circle"></i>
+                        </div>
+                        <p class="formulario__input-error">El campo targeta de identidad no puede
+                            contener
+                            letras.
+                        </p>
+                    </div>
+
+
+
+
+                </div>
+
+
+                <div class="columna">
+                    <!-- Grupo: Acudiente -->
+                    <div class="formulario__grupo" id="grupo__Acudiente">
+                        <label for="Acudiente" class="formulario__label">Acudiente</label>
+                        <div class="formulario__grupo-input">
+                            <input type="text" class="formulario__input" name="Acudiente" id="Acudiente"
+                                placeholder="Nombre Completo" disabled="">
+                            <i class="formulario__validacion-estado fas fa-times-circle"></i>
+                        </div>
+                        <p class="formulario__input-error">El nombre del Acudiente no puede contener
+                            numericos.</p>
+                    </div>
+                    <!-- Grupo: documento -->
+                    <div class="formulario__grupo" id="grupo__documento">
+                        <label for="documento" class="formulario__label">Documento</label>
+                        <div class="formulario__grupo-input">
+                            <input type="text" class="formulario__input" name="documento" id="documento"
+                                placeholder="0000000000" disabled="">
+                            <i class="formulario__validacion-estado fas fa-times-circle"></i>
+                        </div>
+                        <p class="formulario__input-error">El campo no puede contener letras.</p>
+                    </div>
+                    <!-- Grupo: parentesco -->
+                    <div class="formulario__grupo" id="grupo__parentesco">
+                        <label for="parentesco" class="formulario__label">Parentesco </label>
+                        <div class="formulario__grupo-input">
+                            <input type="text" class="formulario__input" name="parentesco" id="parentesco"
+                                placeholder="Abuelo" disabled="">
+                            <i class="formulario__validacion-estado fas fa-times-circle"></i>
+                        </div>
+                        <p class="formulario__input-error">El campo no puede contener numeros.</p>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="cajon">
+                <div class="columnas">
+                    <div class="columna">
+
+                        <!-- Grupo: estado -->
+                        <div class="formulario__grupo" id="grupo__estado">
+                            <label for="estado" class="formulario__label">Estado</label>
+                            <div class="formulario__grupo-input">
+                                <select id="estado" name="estado" disabled="">
+                                    <option value="">Selecciona un estado</option>
+                                    <option value="0">Activo</option>
+                                    <option value="1">Inactivo</option>
+                                    <option value="2">Activo Leglmente</option>
+                                    <option value="3">Inactivo Legalmente</option>
+                                    <option value="4">Fallecido</option>
+
+                                </select>
+                                <i class="formulario__validacion-estado fas fa-times-circle"></i>
+                            </div>
+                            <p class="formulario__input-error">Seleccione un estado</p>
+                        </div>
+
+                        <!-- Grupo: sexoBiologico -->
+                        <div class="formulario__grupo" id="grupo__sexoBiologico">
+                            <label for="sexoBiologico" class="formulario__label">Sexo
+                                Biologico</label>
+                            <div class="formulario__grupo-input">
+                                <input type="text" class="formulario__input" name="sexoBiologico" id="sexoBiologico"
+                                    placeholder="Masculino/Femenino" disabled="">
+                                <i class="formulario__validacion-estado fas fa-times-circle"></i>
+                            </div>
+                            <p class="formulario__input-error">El campo no puede contener numeros.
+                            </p>
+                        </div>
+                        <!-- Grupo: numeroContacto -->
+                        <div class="formulario__grupo" id="grupo__numeroContacto">
+                            <label for="numeroContacto" class="formulario__label">Numero De
+                                Contacto</label>
+                            <div class="formulario__grupo-input">
+                                <input type="text" class="formulario__input" name="numeroContacto" id="numeroContacto"
+                                    placeholder="3127351198">
+                                <i class="formulario__validacion-estado fas fa-times-circle"></i>
+                            </div>
+                            <p class="formulario__input-error">El campo no puede contener letras.
+                            </p>
+                        </div>
+
+
+                    </div>
+
+
+                    <div class="columna">
+                        <!-- Grupo: direccion -->
+                        <div class="formulario__grupo" id="grupo__direccion">
+                            <label for="direccion" class="formulario__label">Direccion</label>
+                            <div class="formulario__grupo-input">
+                                <input type="text" class="formulario__input" name="direccion" id="direccion"
+                                    placeholder="john123">
+                                <i class="formulario__validacion-estado fas fa-times-circle"></i>
+                            </div>
+                            <p class="formulario__input-error">El usuario tiene que ser de 4 a 16
+                                dígitos y
+                                solo puede
+                                contener numeros, letras y guion bajo.</p>
+                        </div>
+
+                        <!-- Grupo: Correo Electronico -->
+                        <div class="formulario__grupo" id="grupo__correo">
+                            <label for="correo" class="formulario__label">Correo Electrónico</label>
+                            <div class="formulario__grupo-input">
+                                <input type="email" class="formulario__input" name="correo" id="correo"
+                                    placeholder="correo@correo.com">
+                                <i class="formulario__validacion-estado fas fa-times-circle"></i>
+                            </div>
+                            <p class="formulario__input-error">El correo solo puede contener letras,
+                                numeros, puntos,
+                                guiones y guion bajo.</p>
+                        </div>
+
+                        <!-- Grupo: ciudad -->
+                        <div class="formulario__grupo" id="grupo__ciudad">
+                            <label for="ciudad" class="formulario__label">Ciudad-Barrio</label>
+                            <div class="formulario__grupo-input">
+                                <input type="text" class="formulario__input" name="ciudad" id="ciudad"
+                                    placeholder="ciudad">
+                                <i class="formulario__validacion-estado fas fa-times-circle"></i>
+                            </div>
+                            <p class="formulario__input-error">El usuario tiene que ser de 4 a 16
+                                dígitos y
+                                solo puede
+                                contener numeros, letras y guion bajo.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Grupo: observaciones -->
+            <div class="formulario__grupo" id="grupo__observaciones">
+                <label for="observacion" class="formulario__label">Observaciones</label>
+                <div class="formulario__grupo-input">
+                    <textarea class="formulario__input" name="observacion" id="observacion" cols="30" rows="10"
+                        disabled="false"></textarea>
+                    <i class="formulario__validacion-estado fas fa-times-circle"></i>
+                </div>
+                <p class="formulario__input-error">El usuario tiene que ser de 4 a 16 dígitos y
+                    solo puede
+                    contener numeros, letras y guion bajo.</p>
+            </div>
+            <br>
+            <!-- Grupo: Terminos y Condiciones -->
+            <div class="formulario__grupo" id="grupo__terminos">
+                <label class="formulario__label">
+                    <input class="formulario__checkbox" type="checkbox" name="terminos" id="terminos">
+                    Acepto los Terminos y Condiciones
+                </label>
+            </div>
+
+            <div class="formulario__mensaje" id="formulario__mensaje">
+                <p><i class="fas fa-exclamation-triangle"></i> <b>Error:</b> Por favor rellena el
+                    formulario
+                    correctamente. </p>
+            </div>
+
+
+            <div class="formulario__grupo formulario__grupo-btn-enviar">
+                <button type="submit" class="formulario__btn">Guardar</button>
+                <p class="formulario__mensaje-exito" id="formulario__mensaje-exito">Formulario
+                    enviado
+                    exitosamente!</p>
+            </div>
+
+            <div class="cancelar">
+                <a href="/acudientes" type="button" class="btn btn-danger">Cancelar</a>
+            </div>
+        </form>
+    </div>
+</div>
+</div>
+</div>
+
+<script src="../js/acudiente/funcionesEditar.js"></script>
+
+{{>footer}}
+
+
+</div>
+</div>
+
+</body>
+
+</html>

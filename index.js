@@ -54,8 +54,8 @@ app.get("/acudientes", (req, res) => {
     res.render("indexAcudientes.hbs");
 });
 
-app.get("/listado", (req, res) => {
-    res.render("indexListado.hbs");
+app.get("/historia-clinica", (req, res) => {
+    res.render("indexHistoriaClinica.hbs");
 });
 
 app.get('/test', (req, res) => {

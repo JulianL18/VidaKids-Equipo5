@@ -1,0 +1,495 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <!-- Meta, title, CSS, favicons, etc. -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+
+    <title>Vidakids |Home</title>
+</head>
+
+{{> header}}
+
+<!-- links para exportar a excel -->
+<script src="https://unpkg.com/xlsx@0.16.9/dist/xlsx.full.min.js"></script>
+<script src="https://unpkg.com/file-saverjs@latest/FileSaver.min.js"></script>
+<script src="https://unpkg.com/tableexport@latest/dist/js/tableexport.min.js"></script>
+
+<body class="nav-md">
+    <div class="container body">
+        <div class="main_container">
+            <div class="col-md-3 left_col">
+                <div class="left_col scroll-view">
+                    <div class="navbar nav_title" style="border: 0;">
+                        <a href="index.html" class="site_title"><img src="../images/VidaKidsLogoCut.png" class="fotito">
+                            <span>VidaKids</span></a>
+                    </div>
+
+
+                    <div class="clearfix"></div>
+
+                    {{>head }}
+                    <!-- page content -->
+
+                    <!-- Agrega esta sección en tu código después de la sección del footer content -->
+                    <!-- page content -->
+                    <div class="right_col" role="main">
+                        <!-- Resto del contenido de la página... -->
+
+                        <!-- Historia Psicológica -->
+                        <div class="section">
+                            <h1 class="titulo-principal">Historia Clínica
+                                <span class="material-symbols-outlined" style="margin-left: auto" style="outline: none;"
+                                    id="descargarPDF" data-tipo="pdf">download</span>
+                            </h1>
+
+
+                            <!-- Información Personal -->
+                            <div class="info-section">
+                                <h3>Información Personal:</h3>
+                                <div class="info-row">
+                                    <ul>
+                                        <li>
+                                            <div><strong>Nombre del Niño:</strong> Julieta Isaza González</div>
+                                        </li>
+                                        <li>
+                                            <div><strong>Edad:</strong> 10 años</div>
+                                        </li>
+                                        <li>
+                                            <div>
+                                                <strong>Género:</strong><br>
+                                                <form>
+                                                    <div class="custom-checkbox-container">
+                                                        <input type="checkbox" id="masculino" name="genero"
+                                                            onchange="checkFemenino()">
+                                                        <div class="custom-checkbox-indicator"></div>
+                                                        <label class="custom-checkbox-label"
+                                                            for="masculino">Masculino</label>
+                                                    </div>
+                                                    <div class="custom-checkbox-container">
+                                                        <input type="checkbox" id="femenino" name="genero"
+                                                            onchange="checkMasculino()">
+                                                        <div class="custom-checkbox-indicator"></div>
+                                                        <label class="custom-checkbox-label"
+                                                            for="femenino">Femenino</label>
+                                                    </div>
+                                                </form>
+                                            </div>
+                                        </li>
+                                        <li><strong>Fecha de Nacimiento:</strong> 16-06-2014</li>
+                                        <li><strong>Lugar de Nacimiento:</strong>Medellín</li>
+                                        <li><strong>Hospital de Nacimiento:</strong>Clinica del Prado</li>
+                                    </ul>
+                                </div>
+                                <div>
+                                    <li><strong>Documento de identidad: </strong>42444879</li>
+                                    <li><strong>Email: </strong>julianisazac@gmail.com</li>
+                                    <li><strong>Teléfono de contacto: </strong>3135767137</li>
+                                    <li><strong>Dirección de residencia: <br></strong>Calle 31A #98-08 Apto 301</li>
+                                </div>
+                            </div>
+
+
+                            <!-- Contexto Familiar -->
+                            <div class="info-section">
+                                <h3>Contexto Familiar:</h3>
+                                <div class="info-row">
+                                    <ul>
+                                        <li>
+                                            <div><strong>Padre:</strong> Jesús de Nazareth</div>
+                                        </li>
+                                        <li>
+                                            <div><strong>Madre:</strong> María Magdalena</div>
+                                        </li>
+                                        <li>
+                                            <div><strong>Relación Familiar:</strong> Familia unida y afectuosa</div>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <div>
+                                    <strong>Historial Familiar:</strong>
+                                    <ul>
+                                        <li><strong>Madre:</strong> María Magdalena (Alzhéimer)</li>
+                                        <li><strong>Padre: </strong>Jesús de Nazareth (Ninguna)</li>
+                                        <li><strong>Abuela:</strong>Paterna(Depresión y trastorno bipolar)</li>
+                                        <li><strong>Tíos:</strong> Ninguna</li>
+                                    </ul>
+                                </div>
+                            </div>
+
+                            <!-- Desarrollo Infantil -->
+                            <div class="info-section">
+                                <h3>Desarrollo Infantil:</h3>
+                                <div class="info-row">
+                                    <ul>
+                                        <li>
+                                            <div>
+                                                <strong>Hitos del Desarrollo:</strong> Comenzó a caminar a los 12 meses,
+                                                habla
+                                                fluidamente en español
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <div>
+                                                <strong>Idiomas:</strong> Español
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <div>
+                                                <strong>Educación:</strong> Está en tercer grado en la escuela primaria
+                                                "Mis
+                                                primeros
+                                                maestros"
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+
+                            <!-- Historial Psicológico -->
+                            <div class="info-section">
+                                <h3>Historial atenciones clínicas:</h3>
+
+                                <div class="evaluation">
+                                    <p><strong>Fecha:</strong> 27 de Julio de 2022</p>
+                                    <p><strong>Profesional:</strong> Daniela González</p>
+                                    <p><strong>Observaciones:</strong> Julieta muestra un buen ajuste emocional en la
+                                        escuela y
+                                        en casa. No se observan signos de ansiedad o depresión. Recomiendo seguimiento
+                                        anual
+                                        para monitorear su desarrollo psicológico.</p>
+                                </div>
+
+                                <div class="evaluation">
+                                    <p><strong>Fecha:</strong> 20 de Septiembre de 2023</p>
+                                    <p><strong>Profesional:</strong> Luis Rodríguez</p>
+                                    <p><strong>Observaciones:</strong> En la última evaluación, Julieta ha demostrado un
+                                        progreso continuo en su desarrollo emocional e intelectual. No se observan
+                                        problemas
+                                        significativos. Se sugiere continuar con un enfoque positivo en el apoyo
+                                        parental.</p>
+                                </div>
+
+                                <div class="evaluation">
+                                    <p><strong>Fecha:</strong> 15 de Enero de 2024</p>
+                                    <p><strong>Profesional:</strong> Laura Martínez</p>
+                                    <p><strong>Observaciones:</strong> Julieta ha mostrado interés en actividades
+                                        artísticas. Se
+                                        recomienda fomentar este interés para apoyar su expresión creativa.</p>
+                                </div>
+
+                                <div class="evaluation">
+                                    <p><strong>Fecha:</strong> 10 de Mayo de 2024</p>
+                                    <p><strong>Profesional:</strong> Alejandro Ramírez</p>
+                                    <p><strong>Observaciones:</strong> Se observa un desarrollo cognitivo positivo en
+                                        Julieta.
+                                        No se detectan preocupaciones significativas en el ámbito psicológico.</p>
+                                </div>
+                                <div class="container mt-5">
+
+                                    <div id="atenciones-container" class="atenciones-grid"></div>
+
+                                    <!-- Botón para abrir el modal -->
+                                    <button type="button" class="btn btn-primary mt-3" data-toggle="modal"
+                                        data-target="#nuevaAtencionModal">
+                                        Agregar Nueva Atención
+                                    </button>
+                                </div>
+                            </div>
+
+                            <!-- Modal para la nueva atención clínica -->
+                            <div class="modal fade" id="nuevaAtencionModal" tabindex="-1" role="dialog"
+                                aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                <div class="modal-dialog" role="document">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title" id="exampleModalLabel">Nueva Atención
+                                                Clínica</h5>
+                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                <span aria-hidden="true">&times;</span>
+                                            </button>
+                                        </div>
+                                        <div class="modal-body">
+                                            <!-- Formulario para la nueva atención clínica -->
+                                            <form id="formNuevaAtencion">
+                                                <div class="form-group">
+                                                    <label for="fechaNuevaAtencion">Fecha:</label>
+                                                    <input type="text" class="form-control" id="fechaNuevaAtencion"
+                                                        placeholder="Fecha">
+                                                </div>
+                                                <div class="form-group">
+                                                    <label for="evaluadorNuevaAtencion">Profesional:</label>
+                                                    <input type="text" class="form-control" id="evaluadorNuevaAtencion"
+                                                        placeholder="Evaluador">
+                                                </div>
+                                                <div class="form-group">
+                                                    <label for="observacionesNuevaAtencion">Observaciones:</label>
+                                                    <textarea class="form-control" id="observacionesNuevaAtencion"
+                                                        placeholder="Observaciones"></textarea>
+                                                </div>
+                                                <!-- Agrega más campos según sea necesario -->
+
+                                                <div class="modal-footer">
+                                                    <button type="button" class="btn btn-secondary"
+                                                        data-dismiss="modal">Cancelar</button>
+                                                    <button type="submit" class="btn btn-primary"
+                                                        onclick="guardarAtencion(event)">Guardar</button>
+                                                </div>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <style>
+                            .custom-checkbox-container {
+                                display: flex;
+                                align-items: center;
+                                margin-bottom: 10px;
+                            }
+
+                            .custom-checkbox-container input[type="checkbox"] {
+                                display: none;
+                            }
+
+                            .custom-checkbox-label {
+                                margin-left: 5px;
+                                cursor: pointer;
+                                font-family: 'Arial', sans-serif;
+                            }
+
+                            .custom-checkbox-indicator {
+                                width: 20px;
+                                height: 20px;
+                                border: 2px solid #007bff;
+                                border-radius: 4px;
+                                display: inline-block;
+                                position: relative;
+                                background-color: #fff;
+                            }
+
+                            .custom-checkbox-container input[type="checkbox"]:checked+.custom-checkbox-indicator {
+                                background-color: #007bff;
+                            }
+
+
+                            .custom-checkbox-indicator:after {
+                                content: '\2713';
+                                font-size: 16px;
+                                color: #fff;
+                                position: absolute;
+                                top: 50%;
+                                left: 50%;
+                                transform: translate(-50%, -50%);
+                                display: none;
+                            }
+
+                            .custom-checkbox-container input[type="checkbox"]:checked+.custom-checkbox-indicator:after {
+                                display: block;
+                            }
+
+                            .material-symbols-outlined {
+                                width: 70px;
+                                height: 25px;
+                                font-variation-settings:
+                                    'FILL' 0,
+                                    'wght' 400,
+                                    'GRAD' 0,
+                                    'opsz' 24
+                            }
+
+                            .material-symbols-outlined:hover {
+                                cursor: pointer;
+                            }
+
+
+
+                            .info-section {
+                                margin-bottom: 20px;
+                            }
+
+                            .info-row {
+                                display: flex;
+                                margin-bottom: 10px;
+                            }
+
+                            .info-row label {
+                                margin-right: 10px;
+                            }
+
+                            .titulo-principal {
+                                display: flex;
+                                align-items: center;
+                                padding: 30px 50px 40px 400px;
+                            }
+
+                            .evaluation {
+                                border: 1px solid #ccc;
+                                padding: 10px;
+                                margin-bottom: 10px;
+                            }
+
+                            .info-section {
+                                display: grid;
+                                grid-template-columns: repeat(4, 1fr);
+                                gap: 20px;
+                                border: 1px solid #ccc;
+                                padding: 10px;
+                                margin-bottom: 10px;
+                            }
+
+                            .btn {
+                                padding: 10px 20px;
+                                cursor: pointer;
+                            }
+
+                            .btn-guardar {
+                                background-color: #007bff;
+                                color: #fff;
+                                padding: 10px 20px;
+                                border: none;
+                                border-radius: 5px;
+                                cursor: pointer;
+                                font-size: 16px;
+                            }
+
+                            .btn-guardar:hover {
+                                background-color: #0056b3;
+                            }
+
+                            .btn-cancelar {
+                                background-color: #d9534f;
+                                color: #fff;
+                                padding: 10px 20px;
+                                border: none;
+                                border-radius: 5px;
+                                cursor: pointer;
+                                font-size: 16px;
+                            }
+
+                            button#agregar-atencion {
+                                background-color: #007bff;
+                                color: #fff;
+                                padding: 10px 20px;
+                                border: none;
+                                border-radius: 5px;
+                                cursor: pointer;
+                                font-size: 16px;
+                            }
+
+                            button#agregar-atencion:hover {
+                                background-color: #0056b3;
+                            }
+
+                            .atenciones-grid {
+                                display: grid;
+                                grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+                                gap: 20px;
+                            }
+                        </style>
+
+                        <script>
+
+                            let atencionesClinicas = [];
+
+                            document.addEventListener('DOMContentLoaded', function () {
+                                const iconoDescargaPDF = document.getElementById('descargarPDF');
+
+                                function descargarArchivo(tipo) {
+                                    const contenido = 'Tu contenido del documento aquí...';  // Reemplaza con tu propio contenido
+                                    const blob = new Blob([contenido], { type: tipo });
+                                    saveAs(blob, 'historia_clinica.' + (tipo === 'application/msword' ? 'doc' : 'pdf'));
+                                }
+
+                                iconoDescargaPDF.addEventListener('click', function () {
+                                    descargarArchivo('application/pdf');
+                                });
+
+                            });
+
+                            let contadorAtenciones = 1;
+
+                            // Función para agregar una nueva atención clínica al formulario
+                            function agregarAtencion() {
+                                const atencionesContainer = document.getElementById('atenciones-container');
+                                const nuevaAtencionForm = document.getElementById('atencion-form');
+                                const atencionFormClone = nuevaAtencionForm.cloneNode(true);
+                                atencionFormClone.id = `atencion-form-${contadorAtenciones}`;
+                                atencionFormClone.querySelector('form').id = `nueva-atencion-form-${contadorAtenciones}`;
+                                atencionFormClone.querySelector('input[name="fecha"]').name = `fecha-${contadorAtenciones}`;
+                                atencionFormClone.querySelector('input[name="evaluador"]').name = `evaluador-${contadorAtenciones}`;
+                                atencionFormClone.querySelector('textarea[name="observaciones"]').name = `observaciones-${contadorAtenciones}`;
+                                atencionesContainer.appendChild(atencionFormClone);
+                                atencionFormClone.style.display = 'block';
+                                contadorAtenciones++;
+                            }
+
+                            function guardarAtencion(event) {
+                                event.preventDefault();
+
+                                // Obtén los valores del formulario
+                                var fecha = document.getElementById('fechaNuevaAtencion').value;
+                                var evaluador = document.getElementById('evaluadorNuevaAtencion').value;
+                                var observaciones = document.getElementById('observacionesNuevaAtencion').value;
+
+                                // Crear objeto con la nueva atención
+                                var nuevaAtencion = {
+                                    fecha: fecha,
+                                    evaluador: evaluador,
+                                    observaciones: observaciones
+                                };
+
+                                // Agregar la nueva atención al array
+                                atencionesClinicas.push(nuevaAtencion);
+
+                                // Mostrar la nueva atención en el HTML
+                                mostrarAtencionEnHTML(nuevaAtencion);
+
+                                // Ocultar el modal
+                                $('#nuevaAtencionModal').modal('hide');
+
+                                // Limpiar el formulario después de guardar
+                                document.getElementById('formNuevaAtencion').reset();
+                            }
+
+                            // Función para mostrar la atención en el HTML
+                            function mostrarAtencionEnHTML(atencion) {
+                                const atencionesContainer = document.getElementById('atenciones-container');
+
+                                // Crear un nuevo elemento div para mostrar la atención
+                                const nuevaAtencionDiv = document.createElement('div');
+                                nuevaAtencionDiv.className = 'evaluation';
+
+                                // Construir el contenido del div
+                                nuevaAtencionDiv.innerHTML = `
+                                        <p><strong>Fecha:</strong> ${atencion.fecha}</p>
+                                        <p><strong>Profesional:</strong> ${atencion.evaluador}</p>
+                                        <p><strong>Observaciones:</strong> ${atencion.observaciones}</p>
+                                    `;
+
+                                // Agregar el nuevo div al contenedor de atenciones
+                                atencionesContainer.appendChild(nuevaAtencionDiv);
+                            }
+
+
+                        </script>
+                        <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.4.0/jspdf.umd.min.js"></script>
+                        <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+                        <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
+                        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+
+                    </div>
+
+                    <!-- /page content -->
+
+                </div>
+            </div>
+</body>
+
+</html>

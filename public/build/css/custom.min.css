@@ -1065,7 +1065,9 @@
 }
 
 .left_col {
+	position: fixed;
 	background: #0f84c3;
+	height: 150vh;
 }
 
 .container {
@@ -1292,7 +1294,7 @@
 	border-bottom: 1px solid #D9DEE4;
 	margin-bottom: 10px;
 	width: 100%;
-	position: relative
+	position: relative;
 }
 
 .info-number .badge {
@@ -1514,7 +1516,9 @@ body {
 	font-family: "Helvetica Neue", Roboto, Arial, "Droid Sans", sans-serif;
 	font-size: 13px;
 	font-weight: 400;
-	line-height: 1.471
+	line-height: 1.471;
+	position: fixed;
+	width: 100%;
 }
 
 .main_container .top_nav {
@@ -1672,7 +1676,7 @@ table.no-margin .progress {
 	min-height: 1px;
 	float: left;
 	padding-right: 10px;
-	padding-left: 10px
+	padding-left: 10px;
 }
 
 .row {
@@ -2922,7 +2926,7 @@ span.right {
 	padding: 5px 0 0 0;
 	position: fixed;
 	width: 230px;
-	background: #2A3F54
+	background: #0f84c3;
 }
 
 .sidebar-footer a {
@@ -2932,7 +2936,7 @@ span.right {
 	font-size: 17px;
 	display: block;
 	float: left;
-	background: #172D44
+	background: #0f84c3
 }
 
 .sidebar-footer a:hover {
